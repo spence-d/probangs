@@ -1,8 +1,8 @@
 # probangs
 
-> Bangs are that on which the world hangs
-> I'm only holding your hand
-> So I can look at your bangs
+> Bangs are that on which the world hangs  
+> I'm only holding your hand  
+> So I can look at your bangs  
 > —They Might Be Giants
 
 **probangs** */ˈpɹoʊbeɪ̯ŋz/* is an extension of search bang syntax for power users.
