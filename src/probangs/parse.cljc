@@ -60,6 +60,7 @@
             [tag value] (str/split param #"=")
             orig-bang (get-bang-alias key)
             tag-bang (or (get orig-bang (keyword tag))
+                         (get-in orig-bang [:flags (keyword tag)])
                          (get orig-bang (:default orig-bang)))
             default-value (if (contains? orig-bang (keyword tag)) value tag)]
 
