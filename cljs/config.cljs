@@ -3,8 +3,6 @@
             [clojure.string :as str]
             [clojure.spec.alpha :as spec]))
 
-;TODO query string overrides
-
 (spec/def ::autofocus? boolean?)
 (spec/def ::history integer?)
 (spec/def ::suggestions #{:tab-only :always :never})
@@ -19,11 +17,11 @@
                                        ::default]))
 
 (def default-config (atom {:autofocus? true
-                           :history 20
+                           :history 0
                            :suggestions :tab-only
-                           :favorites ["wiki" "reddit"]
+                           ;:favorites ["wiki" "reddit"]
                            :lucky "duckduckgo"
-                           :default ["brave" "duckduckgo"]}))
+                           :default ["duckduckgo"]}))
 (def config (atom @default-config))
 (def search-history (atom []))
 (def search-history-idx (atom 0))
@@ -47,40 +45,68 @@
          (take-last (:history @config))
          vec
          (save-storage! "history"))))
-    
+
+(defn form-pair [k v]
+  {(keyword k)
+   (case k
+     "lucky"
+     v
+
+     "default"
+     (str/split v #" ")
+
+     (edn/read-string v))})
+
+(defn merge-query-config [query orig]
+  (let [ks (-> orig keys set)
+        conf (->> query
+                  (filter (comp ks keyword first))
+                  (reduce #(merge %1 (form-pair (first %2) (second %2)))
+                          {}))]
+    (if (spec/valid? ::config conf)
+      (merge orig conf)
+      (do
+        (js/console.info (str "Could not merge query config: " (pr-str conf)))
+        orig))))
+
 (defn merge-form-config! [div base]
-  (let [new-config (->> (.-children div)
-                        (remove #(or (empty? (.-name %))
-                                     (empty? (.-value %))))
-                        (reduce #(merge %1 {(keyword (.-name %2))
-                                            (case (.-name %2)
-                                              "lucky"
-                                              (.-value %2)
-
-                                              "default"
-                                              (str/split (.-value %2) #" ")
-
-                                              (edn/read-string (.-value %2)))})
-                                @base))]
-    
-    (reset! base new-config)))
+  (->> (.-children div)
+       (remove #(or (empty? (.-name %))
+                    (empty? (.-value %))))
+       (reduce #(merge %1 (form-pair (.-name %2) (.-value %2)))
+               @base)
+       (reset! base)))
 
 (defn get-storage [k]
   (some->> k
            (.getItem js/localStorage)
            edn/read-string))
 
-(defn merge-storage-config! []
+(defn merge-storage-config [orig]
   (let [conf (get-storage "config")]
     (if (spec/valid? ::config conf)
-      (reset! config (merge @default-config conf))
-      (reset! config @default-config))))
+      (merge orig conf)
+      (do
+        (js/console.info (str "Could not merge stored config: " (pr-str conf)))
+        orig))))
 
-(defn load-config! []
-  (some->> js/probangs_default_config
-           edn/read-string
-           (swap! default-config merge))
-  (merge-storage-config!)
+(defn merge-page-defaults [page-defaults orig]
+  (let [conf (some->> page-defaults
+                      edn/read-string
+                      (merge orig))]
+    (if (spec/valid? ::config conf)
+      (merge orig conf)
+      (do
+        (js/console.info (str "Could not merge page defaults: " (pr-str conf)))
+        orig))))
+
+(defn load-config! [page-defaults query]
+  (->> @default-config
+       (merge-page-defaults page-defaults)
+       (merge-storage-config)
+       (merge-query-config query)
+       (reset! config))
+
   (reset! search-history (get-storage "history"))
   (reset! default-engine (-> @config :default rand-nth)))
 

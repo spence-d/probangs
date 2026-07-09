@@ -66,8 +66,10 @@
 
         (assoc site :site (:base orig-bang))
         (if default-value
-          (let [tag-url (encode-replace (:url tag-bang) \t default-value)
-                tag-base (encode-replace (:base tag-bang) \t default-value)]
+          (let [tag-url (encode-replace (or (:url tag-bang)
+                                            (:url orig-bang)) \t default-value)
+                tag-base (encode-replace (or (:base tag-bang)
+                                             (:base orig-bang)) \t default-value)]
             (if site
               (assoc site :site tag-base)
               (merge orig-bang {:url tag-url
@@ -88,9 +90,14 @@
 
 (defn search-engine [query bang-list & [current-url default]]
   (map (fn [bang]
-         (let [site (if (contains? bang :site)
+         (let [url (:url bang)
+               site (cond
+                      (contains? bang :site)
                       (or (:site bang)
-                          current-url))
+                          current-url)
+
+                      (nil? url)
+                      (:base bang))
                q (if site
                    (str "site:"
                         (-> site (str/replace-first #"^[^:]+://" ""))
@@ -99,8 +106,7 @@
 
            (if (empty? q)
              (:base bang)
-
-             (encode-replace (:url bang) \s q))))
+             (encode-replace (or url (-> default get-bang-alias :url)) \s q))))
        bang-list))
 
 (defn process-cmd [cmd current-url & {:keys [default lucky]
@@ -115,7 +121,7 @@
 
       ;Bang search
       (not (empty? bangs))
-      {:urls (search-engine search-query bangs current-url)}
+      {:urls (search-engine search-query bangs current-url default)}
 
       ;Web search
       (some (partial = \ ) cmd)
