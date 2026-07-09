@@ -1275,7 +1275,7 @@
 "bimages" {:alias "bingimages"}
 "bim" {:alias "bingimages"}
 "bin" {:url "http://bin.arnastofnun.is/leit/?q={{{s}}}" :name "Beygingarlýsing íslensks nútímamáls" :base "http://bin.arnastofnun.is"}
-"bing" {:url "https://www.bing.com/search?q={{{s}}}" :name "Bing" :base "https://www.bing.com"}
+"bing" {:url "https://www.bing.com/search?q={{{s}}}" :name "Bing" :base "https://www.bing.com" :reg {:url "https://www.bing.com/search?q={{{s}}}&cc={{{t}}}" :base "https://www.bing.com?cc={{{t}}}"} :flags {:img {:url "https://www.bing.com/images?q={{{s}}}" :base "https://www.bing.com/images"} :vid {:url "https://www.bing.com/videos?q={{{s}}}" :base "https://www.bing.com/videos"} :shop {:url "https://www.bing.com/shop?q={{{s}}}" :base "https://www.bing.com/shop"} :news {:url "https://www.bing.com/news?q={{{s}}}" :base "https://www.bing.com/news"}}}
 "binggif" {:url "http://www.bing.com/images/search?&q={{{s}}}&qft=+filterui:photo-animatedgif&FORM=R5IR25" :name "Bing Animated Images (GiFs)" :base "http://www.bing.com"}
 "bingimages" {:url "https://www.bing.com/images/search?q={{{s}}}&go=&form=QBIL&qs=n" :name "Bing Images" :base "https://www.bing.com"}
 "bingmaps" {:url "https://www.bing.com/maps/?q={{{s}}}&obox=1" :name "Bing Maps" :base "https://www.bing.com"}
@@ -1496,7 +1496,7 @@
  "brands" {:url "http://www.brandsoftheworld.com/search/logo?search_api_views_fulltext={{{s}}}" :name "Brands of the world" :base "http://www.brandsoftheworld.com"}
  "bratabase" {:url "http://www.bratabase.com/search/?q={{{s}}}" :name "Bratabase" :base "http://www.bratabase.com"}
  "brv" {:alias "brave"}
- "brave" {:url "https://search.brave.com/search?q={{{s}}}" :name "Brave Search" :base "https://search.brave.com" :suggest "https://search.brave.com/api/suggest?q={{{s}}}"}
+ "brave" {:url "https://search.brave.com/search?q={{{s}}}" :name "Brave Search" :base "https://search.brave.com" :suggest "https://search.brave.com/api/suggest?q={{{s}}}" :cat {:url "https://search.brave.com/{{{t}}}?q={{{s}}}" :base "https://search.brave.com/{{{t}}}"} :default :cat :reg {:url "https://search.brave.com/search?q={{{s}}}&country={{{t}}}"} :lang {:url "https://search.brave.com/search?q={{{s}}}&search_lang={{{t}}}"} :flags {:sfw {:url "https://search.brave.com/search?q={{{s}}}&safesearch=strict"} :nsfw {:url "https://search.brave.com/search?q={{{s}}}&safesearch=off"} :img {:url "https://search.brave.com/images?q={{{s}}}" :base "https://search.brave.com/images"} :vid {:url "https://search.brave.com/videos?q={{{s}}}" :base "https://search.brave.com/videos"} :news {:url "https://search.brave.com/news?q={{{s}}}" :base "https://search.brave.com/news"} :day {:url "https://search.brave.com/search?q={{{s}}}&tf=pd"} :week {:url "https://search.brave.com/search?q={{{s}}}&tf=pw"} :mon {:url "https://search.brave.com/search?q={{{s}}}&tf=pm"} :year {:url "https://search.brave.com/search?q={{{s}}}&tf=py"}}}
  "br" {:alias "baseballreference"}
  "brd" {:url "https://boardreader.com/s/{{{s}}}.html" :name "Boardreader" :base "https://boardreader.com"}
  "breitbart" {:url "http://www.breitbart.com/search/?s={{{s}}}" :name "Breitbart News" :base "http://www.breitbart.com"}
@@ -2679,7 +2679,7 @@
  "deen" {:alias "dict.cc"}
  "deeo" {:url "https://deeo.dict.cc/?s={{{s}}}" :name "dict.cc: Esperanto-Deutsch" :base "https://deeo.dict.cc"}
  "deepdyve" {:url "https://www.deepdyve.com/search?query={{{s}}}" :name "DeepDyve" :base "https://www.deepdyve.com"}
- "deepl" {:url "https://www.deepl.com/translator#xx/en/{{{s}}}" :name "DeepL Translator" :base "https://www.deepl.com"}
+ "deepl" {:url "https://www.deepl.com/translator#xx/en/{{{s}}}" :name "DeepL Translator" :base "https://www.deepl.com" :lang {:url "https://www.deepl.com/translator#{{{t}}}/{{{s}}}" :base "https://www.deepl.com/translator#{{{t}}}"} :default :lang}
  "deepleen" {:url "https://www.deepl.com/translator#es/en/{{{s}}}" :name "DeepL ES-EN" :base "https://www.deepl.com"}
  "deeplef" {:url "https://www.deepl.com/translator#en/fr/{{{s}}}" :name "DeepL" :base "https://www.deepl.com"}
  "deepleg" {:url "https://www.deepl.com/translator#en/de/{{{s}}}" :name "DeepL" :base "https://www.deepl.com"}
@@ -3172,10 +3172,10 @@
  "dub" {:url "http://code.dlang.org/search?q={{{s}}}" :name "Dub Package Registry" :base "http://code.dlang.org"}
  "dubizzle" {:url "http://dubai.dubizzle.com/search/?keywords={{{s}}}&is_basic_search_widget=1&is_search=1" :name "dubizzle.com" :base "http://dubai.dubizzle.com"}
  "duc" {:url "https://find.library.duke.edu/?search_field=all_fields&q={{{s}}}" :name "Duke University Catalog" :base "https://find.library.duke.edu"}
- "duckai" {:url "https://www.duckduckgo.com/?q={{{s}}}&ia=chat&bang=true " :name "Duck.ai" :base "https://www.duckduckgo.com"}
+ "duckai" {:url "https://www.duckduckgo.com/?q={{{s}}}&ia=chat&bang=true " :name "Duck.ai" :base "https://www.duck.ai"}
  "duck.co" {:url "https://duck.co/search/{{{s}}}" :name "duck.co" :base "https://duck.co"}
  "duckco" {:alias "duck.co"}
- "duckduckgo" {:url "https://duckduckgo.com/?q={{{s}}}" :name "DuckDuckGo" :base "https://duckduckgo.com" :suggest "https://duckduckgo.com/ac/?type=list&q={{{s}}}" :lucky {:url "http://duckduckgo.com/?q=\\{{{s}}}"}}
+ "duckduckgo" {:url "https://duckduckgo.com/?q={{{s}}}" :name "DuckDuckGo" :base "https://duckduckgo.com" :suggest "https://duckduckgo.com/ac/?type=list&q={{{s}}}" :lucky {:url "https://duckduckgo.com/?q=\\{{{s}}}"} :mode {:url "https://duckduckgo.com/{{{t}}}?q={{{s}}}" :base "https://duckduckgo.com/{{{t}}}"} :reg {:url "https://duckduckgo.com?q={{{s}}}&kl={{{t}}}" :base "https://duckduckgo.com?kl={{{t}}}"} :default :mode :flags {:sfw {:url "https://duckduckgo.com?q={{{s}}}&kp=1" :base "https://duckduckgo.com?kp=1"} :nsfw {:url "https://duckduckgo.com?q={{{s}}}&kp=-2" :base "https://duckduckgo.com?kp=-2"} :noai {:url "https://noai.duckduckgo.com?q={{{s}}}" :base "https://noai.duckduckgo.com"} :ai {:url "https://www.duckduckgo.com/?q={{{s}}}&ia=chat&bang=true" :base "https://www.duck.ai"} :img {:url "https://www.duckduckgo.com/?q={{{s}}}&iax=images&ia=images" :base "https://www.duckduckgo.com"} :vid {:url "https://www.duckduckgo.com/?q={{{s}}}&iax=videos&ia=videos" :base "https://www.duckduckgo.com"} :news {:url "https://www.duckduckgo.com/?q={{{s}}}&iar=news&ia=news" :base "https://www.duckduckgo.com"} :shop {:url "https://www.duckduckgo.com/?q={{{s}}}&iax=shopping&ia=shopping" :base "https://www.duckduckgo.com"} :day {:url "https://duckduckgo.com?q={{{s}}}&df=d" :base "https://duckduckgo.com?df=d"} :week {:url "https://duckduckgo.com?q={{{s}}}&df=w" :base "https://duckduckgo.com?df=w"} :mon {:url "https://duckduckgo.com?q={{{s}}}&df=m" :base "https://duckduckgo.com?df=m"} :year {:url "https://duckduckgo.com?q={{{s}}}&df=y" :base "https://duckduckgo.com?df=y"}}}
  "?" {:alias "duckduckgo"}
  "duckgoes" {:url "https://duckduckgo.com/?q={{{s}}}&kp=-1&k5=1&kah=wt-wt&kl=xl-es&kad=es_ES" :name "Duck Duck Go Español" :base "https://duckduckgo.com"}
  "ducx" {:url "http://help.appducx.com/index.php?topic=doc/Search-Result/index_en.htm&q={{{s}}}" :name "Fabasoft app.ducx Help" :base "http://help.appducx.com"}
@@ -3336,7 +3336,7 @@
  "econlib" {:url "http://econlib.org/cgi-bin/fullsearch.pl?query={{{s}}}" :name "Library of Economics and Liberty" :base "http://econlib.org"}
  "economist" {:url "https://www.economist.com/search?q={{{s}}}" :name "The Economist" :base "https://www.economist.com"}
  "ecoshopper" {:url "http://www.ecoshopper.de/ecoshopper2/faces/SuchErgebnis.jsp?query={{{s}}}&brancheDropDown=alle&preisspanneDropDown=0&_charset_=UTF-8&suchen=Suchen&searchrange=namen" :name "ecoshopper.de" :base "http://www.ecoshopper.de"}
- "ecosia" {:url "https://www.ecosia.org/search?q={{{s}}}" :name "Ecosia" :base "https://www.ecosia.org" :suggest "https://ac.ecosia.org/autocomplete?q={{{s}}}&type=list"}
+ "ecosia" {:url "https://www.ecosia.org/search?q={{{s}}}" :name "Ecosia" :base "https://www.ecosia.org" :flags {:img {:url "https://www.ecosia.org/images?q={{{s}}}"} :vid {:url "https://www.ecosia.org/videos?q={{{s}}}"} :news {:url "https://www.ecosia.org/news?q={{{s}}}"} :shop {:url "https://www.ecosia.org/shopping?q={{{s}}}"} :ai {:url "https://www.ecosia.org/ai-chat?q={{{s}}}" :base "https://www.ecosia.org/ai-chat"} :day {:url "https://www.ecosia.org/search?q={{{s}}}&freshness=day"} :week {:url "https://www.ecosia.org/search?q={{{s}}}&freshness=week"} :mon {:url "https://www.ecosia.org/search?q={{{s}}}&freshness=month"}} :suggest "https://ac.ecosia.org/autocomplete?q={{{s}}}&type=list"}
  "ecotimesindia" {:url "https://economictimes.indiatimes.com/topic/{{{s}}}" :name "Economic Times" :base "https://economictimes.indiatimes.com"}
  "ecowiki" {:url "https://eco.gamepedia.com/index.php?search={{{s}}}&title=Special:Search" :name "Eco Wiki" :base "https://eco.gamepedia.com"}
  "ecs" {:url "https://secure.ecs.soton.ac.uk/kb/search/?q={{{s}}}&s=1" :name "Soton Electronics and Computer Science" :base "https://secure.ecs.soton.ac.uk"}
@@ -4696,6 +4696,7 @@
  "glocal" {:url "http://local.google.com/maps?f=q&source=s_q&geocode=&q={{{s}}}" :name "Google Local" :base "http://local.google.com"}
  "gl" {:url "https://www.opengl.org/search/?cx=017055583490642512057%3Ahwpumfa180i&cof=FORID%3A9&q={{{s}}}" :name "OpenGL" :base "https://www.opengl.org"}
  "gloriatv" {:url "http://gloria.tv/?search={{{s}}}" :name "Gloria.tv" :base "http://gloria.tv"}
+ "glosbe" {:url "https://glosbe.com/en/en/{{{s}}}" :name "Glosbe" :base "https://glosbe.com" :lang {:url "https://glosbe.com/{{{t}}}/{{{s}}}" :base "https://glosbe.com/{{{t}}}"} :default :lang}
  "glotenes" {:url "http://www.interglot.com/dictionary/en/es/search?q={{{s}}} " :name "Interglot EN -> ES" :base "http://www.interglot.com"}
  "glotennl" {:url "http://www.interglot.com/dictionary/en/nl/search?q={{{s}}}" :name "Interglot" :base "http://www.interglot.com"}
  "glotesen" {:url "http://www.interglot.com/dictionary/es/en/search?q={{{s}}} " :name "Interglot ES -> EN" :base "http://www.interglot.com"}
@@ -4827,7 +4828,7 @@
  "googlech" {:url "https://www.google.ch/search?q={{{s}}}" :name "Google Suisse/Schweiz/Switzerland" :base "https://www.google.ch"}
  "googlefonts" {:url "https://fonts.google.com/?query={{{s}}}" :name "Google Fonts" :base "https://fonts.google.com"}
  "googlefr" {:url "https://www.google.fr/#q={{{s}}}" :name "Google France" :base "https://www.google.fr"}
- "google" {:url "https://www.google.com/search?q={{{s}}}" :name "Google" :base "https://www.google.com" :suggest "https://www.google.com/complete/search?client=firefox&q={{{s}}}" :lucky {:url "https://www.google.com/search?q={{{s}}}&btnI=1"}}
+ "google" {:url "https://www.google.com/search?q={{{s}}}" :name "Google" :base "https://www.google.com" :reg {:url "https://www.google.com/search?q={{{s}}}&gl={{{t}}}" :base "https://www.google.com?gl={{{t}}}"} :lang {:url "https://www.google.com/search?q={{{s}}}&hl={{{t}}}" :base "https://www.google.com?hl={{{t}}}"} :flags {:sfw {:url "https://www.google.com/search?q={{{s}}}&safe=active" :base "https://www.google.com?safe=active"} :nsfw {:url "https://www.google.com/search?q={{{s}}}&safe=off" :base "https://www.google.com?safe=off"} :noai {:url "https://www.google.com/search?q={{{s}}}&udm=web" :base "https://www.google.com?udm=web"} :ai{:url "https://www.google.com/search?q={{{s}}}&udm=50" :base "https://www.google.com?udm=50"} :img {:url "https://www.google.com/search?q={{{s}}}&tbm=isch" :base "https://www.google.com?tbm=isch"} :vid {:url "https://www.google.com/search?q={{{s}}}&tbm=vid" :base "https://www.google.com?tbm=vid"} :news {:url "https://www.google.com/search?q={{{s}}}&tbm=nws" :base "https://www.google.com?tbm=nws"} :shop {:url "https://www.google.com/search?q={{{s}}}&tbm=shop" :base "https://www.google.com?tbm=shop"} :day {:url "https://www.google.com/search?q={{{s}}}&tbs=qdr:d" :base "https://www.google.com?tbs=qdr:d"} :week {:url "https://www.google.com/search?q={{{s}}}&tbs=qdr:w" :base "https://www.google.com?tbs=qdr:w"} :mon {:url "https://www.google.com/search?q={{{s}}}&tbs=qdr:m" :base "https://www.google.com?tbs=qdr:m"} :year {:url "https://www.google.com/search?q={{{s}}}&tbs=qdr:y" :base "https://www.google.com?tbs=qdr:y"}} :suggest "https://www.google.com/complete/search?client=firefox&q={{{s}}}" :lucky {:url "https://www.google.com/search?q={{{s}}}&btnI=1"}}
  "googleimages" {:url "http://google.com/search?tbm=isch&q={{{s}}}&tbs=imgo:1" :name "Google Images" :base "http://google.com"}
  "googleimg" {:alias "googleimages"}
  "googlein" {:url "https://www.google.co.in/search?q={{{s}}}" :name "duckduckgo" :base "https://www.google.co.in"}
@@ -5229,7 +5230,7 @@
  "gt-punjabi" {:url "https://translate.google.com/#auto/pa/{{{s}}}" :name "Detect language to Punjabi" :base "https://translate.google.com"}
  "gtpunjabi" {:alias "gt-punjabi"}
  "gtrad" {:alias "gt-french"}
- "gtranslate" {:url "http://translate.google.com/#auto/en/{{{s}}}" :name "Google Translate" :base "http://translate.google.com"}
+ "gtranslate" {:url "http://translate.google.com/#auto/en/{{{s}}}" :name "Google Translate" :base "http://translate.google.com" :to {:url "http://translate.google.com/#auto/{{{t}}}/{{{s}}}" :base "http://translate.google.com/#auto/{{{t}}}"} :lang {:url "http://translate.google.com/#{{{t}}}/{{{s}}}" :base "http://translate.google.com/#{{{t}}}"} :default :lang}
  "gtrends" {:url "https://trends.google.com/trends/explore?date=all&geo=US&q={{{s}}}" :name "Google Trends" :base "https://trends.google.com"}
  "gtr" {:url "http://www.google.com.tr/search?source=hp&q={{{s}}}&meta=&aq=f&aqi=g10&aql=&oq=&gs_rfai=" :name "Google TR" :base "http://www.google.com.tr"}
  "gtro" {:alias "gt-romanian"}
@@ -6955,7 +6956,7 @@
  "listverse" {:url "http://listverse.com/search/?q={{{s}}}&sa=Search" :name "Listverse" :base "http://listverse.com"}
  "litblog" {:url "https://learneditonline.blog/?s={{{s}}}" :name "Learned It Online Blog" :base "https://learneditonline.blog"}
  "litdev" {:url "https://literarydevices.net/?s={{{s}}}" :name "Literary Devices and Terms" :base "https://literarydevices.net"}
- "lite" {:url "https://duckduckgo.com/lite?q={{{s}}}" :name "DuckDuckGo Lite" :base "https://duckduckgo.com"}
+ "lite" {:url "https://duckduckgo.com/lite?q={{{s}}}" :name "DuckDuckGo Lite" :base "https://duckduckgo.com/lite"}
  "litefx" {:url "https://www.litefx.to/search?q={{{s}}}" :name "LiteFX" :base "https://www.litefx.to"}
  "literana" {:url "https://literana.de/?s={{{s}}}" :name "Literana" :base "https://literana.de"}
  "liter" {:url "https://www.montygreylock.com/search/?q={{{s}}}" :name "Monty's Manifest of Cultural Literacy" :base "https://www.montygreylock.com"}
@@ -7714,7 +7715,7 @@
  "mofakult" {:url "https://www.mofakult.ch/catalogsearch/result/?q={{{s}}}" :name "Mofakult" :base "https://www.mofakult.ch"}
  "moglix" {:url "https://www.moglix.com/search?controller=search&orderby=position&orderway=desc&search_query= {{{s}}}&submit_search=Search" :name "Moglix" :base "https://www.moglix.com"}
  "mojangbug" {:url "https://bugs.mojang.com/issues/?jql=text ~ '{{{s}}}'" :name "Mojang Bug Tracker" :base "https://bugs.mojang.com"}
- "mojeek" {:url "https://www.mojeek.com/search?q={{{s}}}" :name "mojeek" :base "https://www.mojeek.com"}
+ "mojeek" {:url "https://www.mojeek.com/search?q={{{s}}}" :name "mojeek" :base "https://www.mojeek.com" :lang {:url "https://www.mojeek.com/search?q={{{s}}}&lang={{{t}}}" :base "https://www.mojeek.com/?lang={{{t}}}"} :reg {:url "https://www.mojeek.com/search?q={{{s}}}&reg={{{t}}}" :base "https://www.mojeek.com/?reg={{{t}}}"} :flags {:img {:url "https://www.mojeek.com/search?q={{{s}}}&fmt=images" :base "https://www.mojeek.com/images"} :news {:url "https://www.mojeek.com/search?q={{{s}}}&format=news" :base "https://www.mojeek.com/news"} :ai {:url "https://www.mojeek.com/search?q={{{s}}}&fmt=summary"} :sfw {:url "https://www.mojeek.com/search?q={{{s}}}&safe=1" :base "https://www.mojeek.com/?safe=1"}}}
  "moj" {:url "https://www.madeofjeans.com/search/?q={{{s}}}" :name "Made of Jeans" :base "https://www.madeofjeans.com"}
  "mojo" {:url "http://boxofficemojo.com/search/?q={{{s}}}" :name "Box Office Mojo" :base "http://boxofficemojo.com"}
  "mojposao" {:url "https://www.moj-posao.net/Pretraga-Poslova/?keyword={{{s}}}&area=&category=" :name "MojPosao" :base "https://www.moj-posao.net"}
@@ -8299,7 +8300,7 @@
  "norsk" {:url "http://ordbok.uib.no/perl/ordbok.cgi?OPP={{{s}}}&ant_bokmaal=5&ant_nynorsk=5&begge=+&ordbok=begge" :name "Nynorskordboka og Bokmålsordboka" :base "http://ordbok.uib.no"}
  "nortonsafe" {:alias "nortonsafeweb"}
  "nortonsafeweb" {:url "https://safeweb.norton.com/report/show?url={{{s}}}" :name "Norton Safe Web" :base "https://safeweb.norton.com"}
- "noscript" {:url "https://duckduckgo.com/html/?q={{{s}}}" :name "DuckDuckGo (HTML)" :base "https://duckduckgo.com"}
+ "noscript" {:url "https://duckduckgo.com/html/?q={{{s}}}" :name "DuckDuckGo (HTML)" :base "https://duckduckgo.com/html"}
  "nosdeputes" {:url "https://www.nosdeputes.fr/recherche/{{{s}}}" :name "NosDéputés.Fr" :base "https://www.nosdeputes.fr"}
  "noslivres" {:url "http://noslivres.net/?r={{{s}}}" :name "NosLivres" :base "http://noslivres.net"}
  "nos" {:url "https://nos.nl/zoeken/?q={{{s}}}" :name "NOS" :base "https://nos.nl"}
@@ -9589,7 +9590,7 @@
  "qur" {:alias "quran"}
  "quttera" {:url "https://quttera.com/sitescan/{{{s}}}" :name "Quttera" :base "https://quttera.com"}
  "qvc" {:url "http://www.qvc.com/catalog/search.html?langId=-1&storeId=10251&catalogId=10151&keyword={{{s}}}" :name "QVC" :base "http://www.qvc.com"}
- "qwant" {:url "https://www.qwant.com/?q={{{s}}}" :name "Qwant" :base "https://www.qwant.com" :suggest "https://api.qwant.com/api/suggest/?q={{{s}}}&client=opensearch"}
+ "qwant" {:url "https://www.qwant.com/?q={{{s}}}" :name "Qwant" :base "https://www.qwant.com" :suggest "https://api.qwant.com/api/suggest/?q={{{s}}}&client=opensearch" :reg {:url "https://www.qwant.com/?q={{{s}}}&locale={{{t}}}" :base "https://www.qwant.com?locale={{{t}}}"} :flags {:img {:url "https://www.qwant.com/?q={{{s}}}&t=images" :base "https://www.qwant.com/?t=images"} :vid {:url "https://www.qwant.com/?q={{{s}}}&t=videos" :base "https://www.qwant.com/?t=videos"} :news {:url "https://www.qwant.com/?q={{{s}}}&t=news" :base "https://www.qwant.com/?t=news"} :shop {:url "https://www.qwant.com/?q={{{s}}}&t=shopping" :base "https://www.qwant.com/?t=shopping"} :day {:url "https://www.qwant.com/?q={{{s}}}&freshness=day"} :week {:url "https://www.qwant.com/?q={{{s}}}&freshness=week"} :mon {:url "https://www.qwant.com/?q={{{s}}}&freshness=month"}}}
  "qwe" {:url "https://www.qwantjunior.com/?q={{{s}}}&t=education" :name "Qwant Junior Education" :base "https://www.qwantjunior.com"}
  "qwi" {:url "https://www.qwant.com/?q={{{s}}}&t=images" :name "Qwant Images" :base "https://www.qwant.com"}
  "qwl" {:url "https://lite.qwant.com/?q={{{s}}}" :name "Qwant lite" :base "https://lite.qwant.com"}
@@ -9597,7 +9598,7 @@
  "qwn" {:url "https://www.qwant.com/?q={{{s}}}&t=news" :name "Qwant News" :base "https://www.qwant.com"}
  "qw" {:alias "qwant"}
  "qws" {:url "https://www.qwant.com/?q={{{s}}}&t=social" :name "Qwant Social" :base "https://www.qwant.com"}
- "qwt" {:url "https://qwant.com/?q={{{s}}}" :name "Qwant" :base "https://qwant.com" :suggest "https://api.qwant.com/api/suggest/?q={{{s}}}&client=opensearch"}
+ "qwt" {:alias "qwant"}
  "qwv" {:url "https://www.qwant.com/?q={{{s}}}&t=videos" :name "Qwant Videos" :base "https://www.qwant.com"}
  "qww" {:url "https://www.qwant.com/?q={{{s}}}&t=web" :name "Qwant web" :base "https://www.qwant.com"}
  "qz" {:alias "quartz"}
@@ -9750,8 +9751,8 @@
  "redbubble" {:url "http://www.redbubble.com/shop/{{{s}}}" :name "RedBubble" :base "http://www.redbubble.com"}
  "redbull" {:url "https://www.redbull.com/int-en/search/{{{s}}}" :name "Red Bull" :base "https://www.redbull.com"}
  "redcat" {:url "https://www.recreationhobbiescenter.com/pages/search-results-page?q={{{s}}}" :name "Recreation Hobbies Center" :base "https://www.recreationhobbiescenter.com"}
- "redditold" {:url "https://old.reddit.com/search?q={{{s}}}" :name "Reddit (old version)" :base "https://old.reddit.com"}
- "reddit" {:url "https://www.reddit.com/search?q={{{s}}}" :name "Reddit" :base "https://www.reddit.com" :sub {:url "https://www.reddit.com/r/{{{t}}}/search?q={{{s}}}" :base "https://www.reddit.com/r/{{{t}}}"} :default :sub}
+ "redditold" {:url "https://old.reddit.com/search?q={{{s}}}" :name "Reddit (old version)" :base "https://old.reddit.com" :sub {:url "https://old.reddit.com/r/{{{t}}}/search?q={{{s}}}" :base "https://old.reddit.com/r/{{{t}}}"} :usr {:url "https://old.reddit.com/user/{{{t}}}/search?q={{{s}}}" :base "https://old.reddit.com/u/{{{t}}}"} :default :sub}
+ "reddit" {:url "https://www.reddit.com/search?q={{{s}}}" :name "Reddit" :base "https://www.reddit.com" :sub {:url "https://www.reddit.com/r/{{{t}}}/search?q={{{s}}}" :base "https://www.reddit.com/r/{{{t}}}"} :usr {:url "https://www.reddit.com/user/{{{t}}}/search?q={{{s}}}" :base "https://www.reddit.com/u/{{{t}}}"} :flags {:old {:url "https://old.reddit.com/search?q={{{s}}}" :base "https://old.reddit.com"}} :default :sub}
  "reddits" {:alias "subreddit"}
  "redeen" {:url "https://dictionary.reverso.net/german-english/{{{s}}}" :name "Reverso German - English" :base "https://dictionary.reverso.net"}
  "redensarten" {:url "http://www.redensarten-index.de/suche.php?suchbegriff={{{s}}}&bool=relevanz&gawoe=an&suchspalte[]=rart_ou&suchspalte[]=rart_varianten_ou" :name "Redensarten-Index" :base "http://www.redensarten-index.de"}
@@ -10873,7 +10874,7 @@
  "sprkr" {:url "https://www.spreaker.com/search?query={{{s}}}" :name "Spreaker" :base "https://www.spreaker.com"}
  "sproget" {:url "https://sproget.dk/lookup?SearchableText={{{s}}}" :name "Sproget" :base "https://sproget.dk"}
  "spr" {:url "http://search.sitepoint.com/?q={{{s}}}&refinements%5Breference%5D=1" :name "SitePoint Reference" :base "http://search.sitepoint.com"}
- "sp" {:url "https://startpage.com/do/metasearch.pl?query={{{s}}}" :name "StartPage" :base "https://startpage.com"}
+ "sp" {:alias "startpage"}
  "sptio" {:url "https://search.privacytools.io/?q={{{s}}}" :name "search.privacytools.io" :base "https://search.privacytools.io"}
  "spt" {:alias "spotifysearch"}
  "sptv" {:url "http://video.samaritanspurse.org/?s={{{s}}}" :name "Samaritan Purse TV" :base "http://video.samaritanspurse.org"}
@@ -10964,10 +10965,10 @@
  "starmade" {:url "https://starmadepedia.net/index.php?title=Special%3ASearch&search={{{s}}}&go=Go" :name "Official StarMade Wiki" :base "https://starmadepedia.net"}
  "starticket" {:url "https://www.starticket.ch/de/suche?_csquery={{{s}}}" :name "Starticket" :base "https://www.starticket.ch"}
  "startpageimages" {:url "https://startpage.com/do/search?cat=pics&cmd=process_search&query={{{s}}}" :name "Startpage (images)" :base "https://startpage.com"}
- "startpage" {:url "https://www.startpage.com/do/dsearch?query={{{s}}}&cat=web&pl=opensearch" :name "Startpage" :base "https://www.startpage.com"}
+ "startpage" {:url "https://www.startpage.com/do/dsearch?query={{{s}}}&cat=web&pl=opensearch" :name "Startpage" :base "https://www.startpage.com" :lang {:url "https://www.startpage.com/do/dsearch?query={{{s}}}&cat=web&pl=opensearch&language={{{t}}}"} :flags {:img {:url "https://www.startpage.com/do/dsearch?query={{{s}}}&cat=pics&pl=opensearch"} :vid {:url "https://www.startpage.com/do/dsearch?query={{{s}}}&cat=video&pl=opensearch"} :news {:url "https://www.startpage.com/do/dsearch?query={{{s}}}&cat=news&pl=opensearch"} :shop {:url "https://www.startpage.com/do/dsearch?query={{{s}}}&cat=shopping&pl=opensearch"} :day {:url "https://www.startpage.com/do/dsearch?query={{{s}}}&cat=web&pl=opensearch&with_date=d"} :week {:url "https://www.startpage.com/do/dsearch?query={{{s}}}&cat=web&pl=opensearch&with_date=w"} :mon {:url "https://www.startpage.com/do/dsearch?query={{{s}}}&cat=web&pl=opensearch&with_date=m"} :year {:url "https://www.startpage.com/do/dsearch?query={{{s}}}&cat=web&pl=opensearch&with_date=y"} :sfw {:url "https://safe.startpage.com/do/dsearch?query={{{s}}}&cat=web&pl=opensearch"}}}
  "startpagevideos" {:url "https://startpage.com/do/search?cat=video&cmd=process_search&query={{{s}}}" :name "StartPage (videos)" :base "https://startpage.com"}
  "startrek" {:url "http://memory-alpha.wikia.com/wiki/Special:Search?search={{{s}}}&fulltext=Search&resultsLang=en" :name "Memory Alpha" :base "http://memory-alpha.wikia.com"}
- "start" {:url "https://www.startpage.com/do/dsearch?query={{{s}}}" :name "startpage.com" :base "https://www.startpage.com"}
+ "start" {:alias "startpage"}
  "startupjobs" {:url "https://startup.jobs/?q={{{s}}}" :name "Startup Jobs" :base "https://startup.jobs"}
  "startup" {:url "https://startupbuffer.com/search?s={{{s}}}" :name "Startup Buffer" :base "https://startupbuffer.com"}
  "starwars" {:url "http://starwars.wikia.com/wiki/Special:Search?search={{{s}}}&go=&fulltext=Search " :name "Wookiepedia" :base "http://starwars.wikia.com"}
@@ -11151,7 +11152,7 @@
  "swift" {:url "https://developer.apple.com/search/?q={{{s}}}" :name "Swift Standard Library" :base "https://developer.apple.com"}
  "swipl" {:url "http://www.swi-prolog.org/pldoc/search?for={{{s}}}&in=all&match=summary" :name "SWI-Prolog" :base "http://www.swi-prolog.org"}
  "swissbib" {:url "https://www.swissbib.ch/Search/Results?lookfor={{{s}}}&type=AllFields" :name "swissbib" :base "https://www.swissbib.ch"}
- "swisscows" {:url "https://swisscows.com/?query={{{s}}}" :name "Swisscows" :base "https://swisscows.com"}
+ "swisscows" {:url "https://swisscows.com/en/web?query={{{s}}}" :name "Swisscows" :base "https://swisscows.com" :reg {:url "https://swisscows.com/en/web?query={{{s}}}&reg={{{t}}}" :base "https://swisscows.com/?reg={{{t}}}"} :lang {:url "https://swisscows.com/{{{t}}}/web/?query={{{s}}}" :base "https://swisscows.com/{{{t}}}/web"} :flags {:img {:url "https://swisscows.com/en/images/?query={{{s}}}" :base "https://swisscows.com/en/images"} :vid {:url "https://swisscows.com/en/video/?query={{{s}}}" :base "https://swisscows.com/en/video"} :shop {:url "https://swisscows.com/en/shopping/?query={{{s}}}" :base "https://swisscows.com/en/shopping"} :day {:url "https://swisscows.com/en/web?query={{{s}}}&freshness=Day"} :week {:url "https://swisscows.com/en/web?query={{{s}}}&freshness=Week"} :mon {:url "https://swisscows.com/en/web?query={{{s}}}&freshness=Month"} :year {:url "https://swisscows.com/en/web?query={{{s}}}&freshness=Year"}}}
  "swisspost" {:url "https://www.post.ch/EasyTrack/submitParcelData.do?formattedParcelCodes={{{s}}}" :name "Swiss Post" :base "https://www.post.ch"}
  "swi" {:url "http://www.swi-prolog.org/search?for={{{s}}}" :name "SWI-Prolog" :base "http://www.swi-prolog.org"}
  "swoopge" {:url "https://www.swoop.ge/search?query={{{s}}}" :name "Swoop.ge discounts in Georgia" :base "https://www.swoop.ge"}
@@ -11271,8 +11272,7 @@
  "tastekid" {:url "http://www.tastekid.com/like/{{{s}}}" :name "TasteKid" :base "http://www.tastekid.com"}
  "tasteline" {:url "http://www.tasteline.com/ReceptSok/{{{s}}}" :name "Tasteline" :base "http://www.tasteline.com"}
  "taste" {:url "http://www.taste.com.au/search-recipes/?q={{{s}}}" :name "Taste.com.au" :base "http://www.taste.com.au"}
- "tatoeba" {:alias "tatoebla"}
- "tatoebla" {:url "http://tatoeba.org/sentences/search?query={{{s}}}" :name "Tatoebla" :base "http://tatoeba.org"}
+ "tatoeba" {:url "http://tatoeba.org/sentences/search?query={{{s}}}" :name "Tatoeba" :base "http://tatoeba.org"}
  "tato" {:alias "tatoebla"}
  "ta" {:url "http://www.tripadvisor.com/Search?q={{{s}}} " :name "tripadvisor" :base "http://www.tripadvisor.com"}
  "tauk" {:url "https://www.tripadvisor.co.uk/Search?q={{{s}}}" :name "TripAdvisor (UK)" :base "https://www.tripadvisor.co.uk"}
@@ -12775,7 +12775,7 @@
  "wikipainting" {:alias "wikipaintings"}
  "wikipediade" {:url "http://de.wikipedia.org/w/index.php?search={{{s}}}&go=Go" :name "Wikipedia Deutschland" :base "http://de.wikipedia.org"}
  "wikipediait" {:url "https://it.wikipedia.org/w/index.php?search={{{s}}}&go=Go" :name "Wikipedia in Italiano" :base "https://it.wikipedia.org"}
- "wikipedia" {:url "http://en.wikipedia.org/wiki/Special:Search?search={{{s}}}&go=Go" :name "Wikipedia" :base "http://en.wikipedia.org" :suggest "https://en.wikipedia.org/w/api.php?action=opensearch&search={{{s}}}" :lang {:url "https://{{{t}}}.wikipedia.org/wiki/Special:Search?search={{{s}}}" :base "https://{{{t}}}.wikipedia.org"} :default :lang}
+ "wikipedia" {:url "http://en.wikipedia.org/wiki/Special:Search?search={{{s}}}&go=Go" :name "Wikipedia" :base "http://en.wikipedia.org" :suggest "https://en.wikipedia.org/w/api.php?action=opensearch&search={{{s}}}" :lang {:url "https://{{{t}}}.wikipedia.org/wiki/Special:Search?search={{{s}}}" :base "https://{{{t}}}.wikipedia.org"} :default :lang :flags {:nogo {:url "http://en.wikipedia.org/wiki/Special:Search?search={{{s}}}&fulltext=Search"}}}
  "wikipediocracy" {:url "http://wikipediocracy.com/?s={{{s}}}" :name "Wikipediocracy (blog)" :base "http://wikipediocracy.com"}
  "wiki.pl" {:url "https://pl.wikipedia.org/wiki/{{{s}}}" :name "Wikipedia Polska" :base "https://pl.wikipedia.org"}
  "wikipt" {:alias "wikibr"}

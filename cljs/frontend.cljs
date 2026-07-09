@@ -26,7 +26,7 @@
 
 ;Pre-load entry point
 (let [params (-> js/window .-location .-search js/URLSearchParams.)]
-  (config/load-config!)
+  (config/load-config! js/probangs_default_config params)
 
   (reset! config/referrer (or (.get params "ref")
                               (not-empty (.-referrer js/document))))

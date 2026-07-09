@@ -12,9 +12,7 @@
             [garden.selectors :as selector]))
 
 (def default-config {:autofocus? true
-                     :suggestions :never
-                     :default ["brave"]
-                     :lucky "duckduckgo"})
+                     :suggestions :never})
 
 (def style
   (css {:pretty-print? false}
