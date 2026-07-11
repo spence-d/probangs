@@ -54,6 +54,13 @@ To build the HTML file:
 lein run
 ```
 
+Or, if hosting, you can build opensearch.xml by providing the hostname in an
+environment variable.
+
+```sh
+PROBANGS_HOST=http://localhost:3000 lein run
+```
+
 To build the JavaScript file:
 
 ```sh

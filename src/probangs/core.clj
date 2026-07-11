@@ -2,6 +2,7 @@
   (:require [clojure.pprint :refer [pprint]]
             [clojure.string :as str]
             [clojure.data.json :as json]
+            [clojure.data.xml :as xml :refer [element] :rename {element xel}]
             [probangs.parse :as parser]
             [compojure.core :refer :all]
             [compojure.route :as route]
@@ -13,6 +14,9 @@
 
 (def default-config {:autofocus? true
                      :suggestions :never})
+
+(def os-ns "http://a9.com/-/spec/opensearch/1.1/")
+(xml/alias-uri 'os os-ns)
 
 (def style
   (css {:pretty-print? false}
@@ -86,6 +90,10 @@
                (page/include-js "main.js")
                [:meta {:charset "utf-8"}]
                [:title "!Pro Search"]
+               [:link {:rel "search"
+                       :title "!Pro"
+                       :type "application/opensearchdescription+xml"
+                       :href "opensearch.xml"}]
                [:link {:rel "icon"
                        :type "image/png"
                        :href "favicon.ico"}]
@@ -147,6 +155,29 @@
                      :tabindex -1}
                  "⚙"]]]))
 
+(defn make-opensearch [host filename]
+  (let [opensearch
+        (xel ::os/OpenSearchDescription {:xmlns os-ns
+                                         :xmlns:moz "http://www.mozilla.org/2006/browser/search/"}
+             (xel ::os/ShortName {} "!Pro")
+             (xel ::os/Descripton {} "!Pro Search - Bangs for Pros")
+             (xel ::os/InputEncoding {} "UTF-8")
+             (xel ::os/OutputEncoding {} "UTF-8")
+             (xel ::os/Image {:width "16"
+                              :height "16"
+                              :type "image/png"}
+                  (str host "favicon.ico"))
+             (when-not (= (:suggestions default-config) :never)
+               (xel ::os/Url {:type "application/x-suggestions+json"
+                              :method "GET"
+                              :template (str host "suggest?q={searchTerms}")}))
+				 (xel ::os/Url {:type "text/html"
+                            :method "GET"
+                            :template (str host "?q={searchTerms}")}))]
+  (->> opensearch
+       xml/emit-str
+       (spit filename))))
+
 (defn make-index [filename]
   (->> index
        str
@@ -178,4 +209,7 @@
 (def handler (-> app handler/api))
 
 (defn -main []
+  (if-some [host (System/getenv "PROBANGS_HOST")]
+    (if host
+      (make-opensearch host "resources/public/opensearch.xml")))
   (make-index "resources/public/index.html"))
