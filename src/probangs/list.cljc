@@ -1496,7 +1496,7 @@
  "brands" {:url "http://www.brandsoftheworld.com/search/logo?search_api_views_fulltext={{{s}}}" :name "Brands of the world" :base "http://www.brandsoftheworld.com"}
  "bratabase" {:url "http://www.bratabase.com/search/?q={{{s}}}" :name "Bratabase" :base "http://www.bratabase.com"}
  "brv" {:alias "brave"}
- "brave" {:url "https://search.brave.com/search?q={{{s}}}" :name "Brave Search" :base "https://search.brave.com" :suggest "https://search.brave.com/api/suggest?q={{{s}}}" :cat {:url "https://search.brave.com/{{{t}}}?q={{{s}}}" :base "https://search.brave.com/{{{t}}}"} :default :cat :reg {:url "https://search.brave.com/search?q={{{s}}}&country={{{t}}}"} :lang {:url "https://search.brave.com/search?q={{{s}}}&search_lang={{{t}}}"} :flags {:sfw {:url "https://search.brave.com/search?q={{{s}}}&safesearch=strict"} :nsfw {:url "https://search.brave.com/search?q={{{s}}}&safesearch=off"} :img {:url "https://search.brave.com/images?q={{{s}}}" :base "https://search.brave.com/images"} :vid {:url "https://search.brave.com/videos?q={{{s}}}" :base "https://search.brave.com/videos"} :news {:url "https://search.brave.com/news?q={{{s}}}" :base "https://search.brave.com/news"} :ai {:url "https://search.brave.com/ask?q={{{s}}}" :base "https://search.brave.com/ask"} :day {:url "https://search.brave.com/search?q={{{s}}}&tf=pd"} :week {:url "https://search.brave.com/search?q={{{s}}}&tf=pw"} :mo {:url "https://search.brave.com/search?q={{{s}}}&tf=pm"} :year {:url "https://search.brave.com/search?q={{{s}}}&tf=py"}}}
+ "brave" {:url "https://search.brave.com/search?q={{{s}}}" :name "Brave Search" :base "https://search.brave.com" :suggest "https://search.brave.com/api/suggest?q={{{s}}}" :cat {:url "https://search.brave.com/{{{t}}}?q={{{s}}}" :base "https://search.brave.com/{{{t}}}"} :default :cat :reg {:url "https://search.brave.com/search?q={{{s}}}&country={{{t}}}"} :lang {:url "https://search.brave.com/search?q={{{s}}}&search_lang={{{t}}}"} :flags {:sfw {:url "https://search.brave.com/search?q={{{s}}}&safesearch=strict"} :nsfw {:url "https://search.brave.com/search?q={{{s}}}&safesearch=off"} :img {:url "https://search.brave.com/images?q={{{s}}}" :base "https://search.brave.com/images"} :vid {:url "https://search.brave.com/videos?q={{{s}}}" :base "https://search.brave.com/videos"} :news {:url "https://search.brave.com/news?q={{{s}}}" :base "https://search.brave.com/news"} :map {:url "https://search.brave.com/maps/search?q={{{s}}}" :base "https://search.brave.com/maps/search"} :ai {:url "https://search.brave.com/ask?q={{{s}}}" :base "https://search.brave.com/ask"} :day {:url "https://search.brave.com/search?q={{{s}}}&tf=pd"} :week {:url "https://search.brave.com/search?q={{{s}}}&tf=pw"} :mo {:url "https://search.brave.com/search?q={{{s}}}&tf=pm"} :year {:url "https://search.brave.com/search?q={{{s}}}&tf=py"}}}
  "br" {:alias "baseballreference"}
  "brd" {:url "https://boardreader.com/s/{{{s}}}.html" :name "Boardreader" :base "https://boardreader.com"}
  "breitbart" {:url "http://www.breitbart.com/search/?s={{{s}}}" :name "Breitbart News" :base "http://www.breitbart.com"}
@@ -4596,7 +4596,7 @@
  "ghc" {:alias "ghcode"}
  "ghcode" {:url "https://github.com/search?utf8=✓&q={{{s}}}&type=Code" :name "Github (code search)" :base "https://github.com"}
  "ghde" {:url "https://geizhals.de/?fs={{{s}}}" :name "Geizhals" :base "https://geizhals.de"}
- "gh" {:alias "git"}
+ "gh" {:alias "github"}
  "ghio" {:name "Github User Pages" :base "https://github.io"}
  "ghjs" {:url "https://github.com/search?l=JavaScript&o=desc&q={{{s}}}&s=indexed&type=Code" :name "GitHub JavaScript Code Search" :base "https://github.com"}
  "ghk" {:url "http://www.google.com.hk/search?source=hp&q={{{s}}}&meta=&aq=f&aqi=g10&aql=&oq=&gs_rfai=" :name "Google HK" :base "http://www.google.com.hk"}
@@ -4658,8 +4658,8 @@
  "gist" {:url "https://gist.github.com/search?q={{{s}}}" :name "Github Gists" :base "https://gist.github.com"}
  "git2" {:url "https://libgit2.github.com/libgit2/#HEAD/search/{{{s}}}" :name "libgit2 documentation" :base "https://libgit2.github.com"}
  "gitdocs" {:alias "git-scm"}
- "git" {:url "https://github.com/search?utf8=%E2%9C%93&q={{{s}}}" :name "Github" :base "https://github.com"}
- "github" {:url "http://github.com/search?q={{{s}}}&type=Everything&repo=&langOverride=&start_value=1" :name "GitHub.com" :base "http://github.com"}
+ "git" {:alias "github"}
+ "github" {:url "http://github.com/search?q={{{s}}}" :name "GitHub.com" :base "http://github.com" :usr {:url "https://github.com/search?q=org%3A{{{t}}}+{{{s}}}&type=repositories" :base "https://github.com/{{{t}}}"} :repo {:url "https://github.com/search?q=repo%3A{{{t}}}+{{{s}}}" :base "https://github.com/{{{t}}}"} :default :repo}
  "githubhelp" {:url "https://help.github.com/search/?q={{{s}}}" :name "GitHub Help" :base "https://help.github.com"}
  "githubstars" {:url "https://github.com/stars?utf8=%E2%9C%93&q={{{s}}}" :name "Github Stars" :base "https://github.com"}
  "gitignore" {:url "https://www.gitignore.io/api/{{{s}}}" :name "gitignore.io" :base "https://www.gitignore.io"}
@@ -8279,6 +8279,8 @@
  "nns" {:url "https://seiga.nicovideo.jp/search/{{{s}}}" :name "Nico Nico Seiga" :base "https://seiga.nicovideo.jp"}
  "nnumber" {:url "http://registry.faa.gov/aircraftinquiry/NNum_Results.aspx?NNumbertxt={{{s}}}" :name "FAA Aircraft Registry" :base "http://registry.faa.gov"}
  "noaa" {:url "http://forecast.weather.gov/zipcity.php?inputstring={{{s}}}" :name "NOAA" :base "http://forecast.weather.gov"}
+ "noai" {:url "https://noai.duckduckgo.com?q={{{s}}}" :name "DuckDuckGo No-AI" :base "https://noai.duckduckgo.com"}
+ "gnoai" {:url "https://www.google.com/search?q={{{s}}}&udm=web" :name "Google Web" :base "https://www.google.com?udm=web"}
  "nodejs" {:url "https://duckduckgo.com/?q=!node+{{{s}}}" :name "Node.js Documentation" :base "https://duckduckgo.com"}
  "node" {:url "http://nodejs.org/api/{{{s}}}.html" :name "node.js docs" :base "http://nodejs.org"}
  "noel" {:url "https://www.noelleeming.co.nz/search.html?q={{{s}}}" :name "Noel Leeming" :base "https://www.noelleeming.co.nz"}
@@ -8435,7 +8437,7 @@
  "occ" {:url "https://openclassrooms.com/courses?q={{{s}}}" :name "OpenClassroom Cours" :base "https://openclassrooms.com"}
  "occuprint" {:url "http://occuprint.org/?action=search&q={{{s}}} " :name "Occuprint" :base "http://occuprint.org"}
  "ocdoc" {:url "https://ocdoc.cil.li/doku.php?id=start&do=search&q={{{s}}}" :name "Official documentation of OpenComputers" :base "https://ocdoc.cil.li"}
- "ocean" {:url "https://oceanhero.today/web?q={{{s}}}" :name "OceanHero" :base "https://oceanhero.today" :flags {:img {:url "https://oceanhero.today/images?q={{{s}}}" :base "https://oceanhero.today/images"} :news {:url "https://oceanhero.today/news?q={{{s}}}" :base "https://oceanhero.today/news"} :vid {:url "https://oceanhero.today/videos?q={{{s}}}" :base "https://oceanhero.today/videos"} :day {:url "https://oceanhero.today/web?q={{{s}}}&freshness=Day"} :week {:url "https://oceanhero.today/web?q={{{s}}}&freshness=Week"} :mo {:url "https://oceanhero.today/web?q={{{s}}}&freshness=Month"}}}
+ "ocean" {:url "https://oceanhero.today/web?q={{{s}}}" :name "OceanHero" :base "https://oceanhero.today" :flags {:img {:url "https://oceanhero.today/images?q={{{s}}}" :base "https://oceanhero.today/images"} :news {:url "https://oceanhero.today/news?q={{{s}}}" :base "https://oceanhero.today/news"} :vid {:url "https://oceanhero.today/videos?q={{{s}}}" :base "https://oceanhero.today/videos"} :day {:url "https://oceanhero.today/web?q={{{s}}}&freshness=Day"} :week {:url "https://oceanhero.today/web?q={{{s}}}&freshness=Week"} :mo {:url "https://oceanhero.today/web?q={{{s}}}&freshness=Month"}} :suggest "https://api.oceanhero.today/suggestions?q={{{s}}}"}
  "oclc" {:url "https://www.worldcat.org/search?q={{{s}}}" :name "OCLC Worldcat" :base "https://www.worldcat.org"}
  "ocna" {:url "https://www.opencaching.us/search.php?searchto=searchbyname&showresult=1&expert=0&output=HTML&sort=bydistance&f_inactive=0&f_ignored=0&f_userfound=0&f_userowner=0&f_watched=0&f_geokret=0&cachename=https://www.opencaching.us/search.php?searchto=searchbyname&showresult=1&expert=0&output=HTML&sort=bydistance&f_inactive=0&f_ignored=0&f_userfound=0&f_userowner=0&f_watched=0&f_geokret=0&cachename={{{s}}}&submit=Search&submit=Search" :name "Opencaching NA" :base "https://www.opencaching.us"}
  "oco" {:alias "ocamloscope"}
@@ -13288,7 +13290,7 @@
  "yaen" {:url "https://yandex.com/yandsearch?text={{{s}}}&lr=103421" :name "Yandex" :base "https://yandex.com"}
  "yahoofinau" {:url "https://au.finance.yahoo.com/q?s={{{s}}}" :name "Yahoo Finance Australia" :base "https://au.finance.yahoo.com"}
  "yahoojdic" {:url "http://dic.search.yahoo.co.jp/search?p={{{s}}}" :name "Yahoo Search Japan" :base "http://dic.search.yahoo.co.jp"}
- "yahoo" {:url "http://search.yahoo.com/search?p={{{s}}}" :name "Yahoo!" :base "http://yahoo.com" :flags {:img {:url "https://images.search.yahoo.com/search/images?p={{{s}}}" :base "https://images.search.yahoo.com"} :gif {:url "https://images.search.yahoo.com/search/images?p={{{s}}}&fr2=p%3As%2Cv%3Ai&imgty=gif" :base "https://images.search.yahoo.com"} :vid {:url "https://video.search.yahoo.com/search/video?p={{{s}}}" :base "https://video.search.yahoo.com"} :news {:url "http://news.search.yahoo.com/news/search?p={{{s}}}" :base "http://news.search.yahoo.com"} :shop {:url "http://shopping.yahoo.com/search?p={{{s}}}" :base "http://shopping.yahoo.com"} :ai {:url "http://scout.yahoo.com/chat?q={{{s}}}" :base "http://scout.yahoo.com"} :day {:url "http://search.yahoo.com/search?p={{{s}}}&btf=d"} :week {:url "http://search.yahoo.com/search?p={{{s}}}&btf=w"} :mo {:url "http://search.yahoo.com/search?p={{{s}}}&btf=m"}}}
+ "yahoo" {:url "http://search.yahoo.com/search?p={{{s}}}" :name "Yahoo!" :base "http://yahoo.com" :flags {:img {:url "https://images.search.yahoo.com/search/images?p={{{s}}}" :base "https://images.search.yahoo.com"} :gif {:url "https://images.search.yahoo.com/search/images?p={{{s}}}&fr2=p%3As%2Cv%3Ai&imgty=gif" :base "https://images.search.yahoo.com"} :vid {:url "https://video.search.yahoo.com/search/video?p={{{s}}}" :base "https://video.search.yahoo.com"} :news {:url "http://news.search.yahoo.com/news/search?p={{{s}}}" :base "http://news.search.yahoo.com"} :shop {:url "http://shopping.yahoo.com/search?p={{{s}}}" :base "http://shopping.yahoo.com"} :ai {:url "http://scout.yahoo.com/chat?q={{{s}}}" :base "http://scout.yahoo.com"} :day {:url "http://search.yahoo.com/search?p={{{s}}}&btf=d"} :week {:url "http://search.yahoo.com/search?p={{{s}}}&btf=w"} :mo {:url "http://search.yahoo.com/search?p={{{s}}}&btf=m"}} :suggest "https://search.yahoo.com/sugg/os?command={{{s}}}&output=fxjson"}
  "yajp" {:url "http://auctions.search.yahoo.co.jp/search?p={{{s}}}" :name "Yahoo! Auctions Japan" :base "http://auctions.search.yahoo.co.jp"}
  "yamarket" {:url "https://ya-market.org/products?search={{{s}}}" :name "Ya Market" :base "https://ya-market.org"}
  "yama" {:url "https://market.yandex.ru/search?text={{{s}}}" :name "Yandex.Market" :base "https://market.yandex.ru"}

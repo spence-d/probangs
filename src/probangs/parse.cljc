@@ -104,7 +104,7 @@
                         " " query)
                    query)]
 
-           (if (empty? q)
+           (if (empty? query)
              (:base bang)
              (encode-replace (or url (-> default get-bang-alias :url)) \s q))))
        bang-list))

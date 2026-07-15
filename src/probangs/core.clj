@@ -1,6 +1,7 @@
 (ns probangs.core
   (:require [clojure.pprint :refer [pprint]]
             [clojure.string :as str]
+            [clojure.java.io :as io]
             [clojure.data.json :as json]
             [clojure.data.xml :as xml :refer [element] :rename {element xel}]
             [probangs.parse :as parser]
@@ -166,14 +167,14 @@
              (xel ::os/Image {:width "16"
                               :height "16"
                               :type "image/png"}
-                  (str host "favicon.ico"))
+                  (str host "/favicon.ico"))
              (when-not (= (:suggestions default-config) :never)
                (xel ::os/Url {:type "application/x-suggestions+json"
                               :method "GET"
-                              :template (str host "suggest?q={searchTerms}")}))
+                              :template (str host "/suggest?q={searchTerms}")}))
 				 (xel ::os/Url {:type "text/html"
                             :method "GET"
-                            :template (str host "?q={searchTerms}")}))]
+                            :template (str host "#q={searchTerms}")}))]
   (->> opensearch
        xml/emit-str
        (spit filename))))
@@ -183,22 +184,34 @@
        str
        (spit filename)))
 
-(defn get-suggestions [term default]
+(defn get-suggestions [term default headers]
   (let [[query bangs bang-names] (parser/parse-search term nil)]
     (if-some [suggest-url (or (some->> bangs (map :suggest) (some identity))
                               (some->> default (str \!) parser/get-bang :suggest))]
-      (let [res (->> query
-                     (parser/encode-replace suggest-url \s)
-                     slurp
-                     json/read-str)
-            rebang [term (map #(str/join " " (concat bang-names [%]))
-                              (second res))]]
-        (json/write-str rebang)))))
+      (let [encode (partial parser/encode-replace suggest-url \s)
+            conn (-> query
+                     encode
+                     io/as-url
+                     .openConnection)]
+        (doto conn
+          (.setRequestMethod "GET")
+          (.setDoOutput true)
+          (.setConnectTimeout 1000)
+          (.setReadTimeout 1000)
+          (.setRequestProperty "accept" (headers "accept"))
+          (.setRequestProperty "user-agent" (headers "user-agent")))
+        (if (= (.getResponseCode conn) 200)
+          (let [res (with-open [input (.getInputStream conn)]
+                      (-> input slurp json/read-str))
+                rebang [term (map #(str/join " " (concat bang-names [%]))
+                                  (second res))]]
+            (json/write-str rebang)))))))
 
 (defroutes app
   (GET "/suggest"
-       {{query "q" default "def"} :query-params}
-       (let [sug (get-suggestions query default)]
+       {{query "q" default "def"} :query-params
+        headers :headers}
+       (let [sug (get-suggestions query default headers)]
          (pprint sug)
          {:status 200
           :headers {"Content-Type" "application/json"}
