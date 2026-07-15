@@ -25,10 +25,14 @@
     (-> js/window .-location (set! (first urls)))))
 
 ;Pre-load entry point
-(let [params (-> js/window .-location .-search js/URLSearchParams.)]
+(let [params (-> js/window
+                  .-location
+                  .-hash
+                  (str/replace-first #"#" "?")
+                  js/URLSearchParams.)]
   (config/load-config! js/probangs_default_config params)
 
-  (reset! config/referrer (or (.get params "ref")
+  (reset! config/referrer (or (.get params "from")
                               (not-empty (.-referrer js/document))))
 
   (if-some [q (.get params "q")]
@@ -189,7 +193,11 @@
         menu (doto (.createElement js/document "div")
                (-> .-id (set! "pro-search-menu")))
         searcharea (.getElementById js/document "pro-search-area")
-        params (-> js/window .-location .-search js/URLSearchParams.)]
+        params (-> js/window
+                   .-location
+                   .-hash
+                   (str/replace-first #"#" "?")
+                   js/URLSearchParams.)]
 
     (doto searcharea
       (.appendChild searchbar)
@@ -204,7 +212,7 @@
         (.prepend url (doto (.createElement js/document "input")
                         (-> .-type (set! "text"))
                         (.setAttribute "readonly" "")
-                        (-> .-value (set! (str this-url "?q=%s")))))
+                        (-> .-value (set! (str this-url "#q=%s")))))
         (if (or (= (:suggestions @config/config) :never)
                 (= (.. js/window -location -protocol) "file:"))
           (doto suggestion
@@ -223,13 +231,15 @@
                           (-> .-href (set! (str this-path "main.js")))
                           (.setAttribute "download" "")
                           (-> .-innerText (set! "[js]")))))
-        (.appendChild bookmarklet (doto (.createElement js/document "a")
-                                    (-> .-href (set! (str "javascript:window.location=\""
-                                                          this-url
-                                                          "?q=\"+window.getSelection().toString()+\""
-                                                          "&go=false"
-                                                          "&ref=\"+window.location;")))
-                                    (-> .-innerText (set! "!Pro"))))))
+        (if (not= (.. js/window -location -protocol) "file:")
+          (.appendChild bookmarklet (doto (.createElement js/document "a")
+                                      (-> .-href (set! (str "javascript:((s)=>{var t='',go='&go=false';"
+                                                            "if(s.trim()&&s!=='%'+'s'){t=' '+s;go=''}"
+                                                            "window.open('"
+                                                            this-url
+                                                            "#q='+encodeURIComponent(window.getSelection().toString()+t)+go+'"
+                                                            "&from='+encodeURIComponent(window.location),'_blank');})('%s')")))
+                                      (-> .-innerText (set! "!Pro")))))))
 
     (populate-settings)
 
